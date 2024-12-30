@@ -2,16 +2,12 @@ import WebSocket from "ws";
 
 import { env } from "~/env";
 
+import { AudioStream, type AudioFormat, type AudioSampleRate } from "../audio";
 import { sleep } from "../utils/timer";
 import { generateUUID } from "../utils/uuid";
 
-import { AudioStream } from "./AudioStream";
 import { type CosyVoiceCommand } from "./commands";
-import {
-  type AudioSampleRate,
-  type AudioFormat,
-  type CosyVoiceName,
-} from "./types";
+import { type CosyVoiceName } from "./types";
 
 const NAMESPACE = "FlowingSpeechSynthesizer";
 const WS_ENTRY_POINT = "wss://nls-gateway-cn-beijing.aliyuncs.com/ws/v1";

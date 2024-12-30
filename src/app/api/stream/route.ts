@@ -1,6 +1,7 @@
 import { type NextRequest } from "next/server";
 
-import { type AudioFormat, CosyVoiceService } from "~/core/cosy-voice";
+import { type AudioFormat } from "~/core/audio";
+import { CosyVoiceService } from "~/core/cosy-voice";
 
 export async function GET(request: NextRequest) {
   const format = (request.nextUrl.searchParams.get("format") ??

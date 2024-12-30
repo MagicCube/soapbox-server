@@ -1,8 +1,6 @@
-import {
-  type AudioFormat,
-  type AudioSampleRate,
-  type CosyVoiceName,
-} from "./types";
+import { type AudioFormat, type AudioSampleRate } from "../audio";
+
+import { type CosyVoiceName } from "./types";
 
 interface GenericCosyVoiceCommand<
   T extends string,
