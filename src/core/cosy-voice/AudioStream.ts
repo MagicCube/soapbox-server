@@ -28,7 +28,6 @@ export class AudioStreamSource implements UnderlyingDefaultSource {
       throw new Error("Controller not initialized");
     }
     this._controller.enqueue(data);
-    console.info("Write data", data.length);
   }
 
   close() {
