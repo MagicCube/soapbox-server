@@ -247,11 +247,9 @@ export class CosyVoiceService {
     switch (name) {
       case "SynthesisStarted":
         this._state = "synthesis-started";
-        console.info("CosyVoiceService synthesis started");
         break;
       case "SynthesisCompleted":
         this._state = "synthesis-completed";
-        console.info("CosyVoiceService synthesis completed");
         this.audioStream.close();
         break;
       case "SentenceBegin":
