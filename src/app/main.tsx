@@ -3,16 +3,16 @@
 import { Button } from "@arco-design/web-react";
 import PCMPlayer from "pcm-player";
 
-const player = new PCMPlayer({
-  channels: 1,
-  sampleRate: 16000,
-  flushTime: 1000,
-  fftSize: 1024,
-  inputCodec: "Int16",
-});
-
 export default function Main() {
   const handlePlay = async () => {
+    const player = new PCMPlayer({
+      channels: 1,
+      sampleRate: 16000,
+      flushTime: 1000,
+      fftSize: 1024,
+      inputCodec: "Int16",
+    });
+
     const res = await fetch("/api/stream");
     if (res.status === 200) {
       console.info("Response started");
