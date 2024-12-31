@@ -41,7 +41,7 @@ export interface CosyVoiceServiceConfig {
 const DEFAULT_CONFIG: CosyVoiceServiceConfig = {
   format: "pcm",
   voice: "zhiyan_emo",
-  sampleRate: 16000,
+  sampleRate: 8000,
   volume: 50,
   speechRate: 0,
   pitchRate: 0,

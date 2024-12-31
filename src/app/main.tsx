@@ -7,7 +7,7 @@ export default function Main() {
   const handlePlay = async () => {
     const player = new PCMPlayer({
       channels: 1,
-      sampleRate: 16000,
+      sampleRate: 8000,
       flushTime: 1000,
       fftSize: 1024,
       inputCodec: "Int16",
