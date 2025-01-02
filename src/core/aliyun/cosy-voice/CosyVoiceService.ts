@@ -9,6 +9,8 @@ import { sleep } from "~/core/utils/timer";
 import { generateUUID } from "~/core/utils/uuid";
 import { env } from "~/env";
 
+import { accessTokenService } from "../access-token";
+
 import { type CosyVoiceCommand } from "./commands";
 import { type CosyVoiceName } from "./types";
 
@@ -101,6 +103,7 @@ export class CosyVoiceService {
 
   async open() {
     const accessToken = await this.getAccessToken();
+    console.log("accessToken", accessToken);
     this._ws = new WebSocket(WS_ENTRY_POINT, {
       headers: {
         "X-NLS-Token": `${accessToken}`,
@@ -182,7 +185,7 @@ export class CosyVoiceService {
   }
 
   protected async getAccessToken(): Promise<string> {
-    return env.ALIYUN_NLS_ACCESS_TOKEN;
+    return accessTokenService.getToken();
   }
 
   protected async waitUntil(state: CosyVoiceServiceState, timeout = 5 * 1000) {
