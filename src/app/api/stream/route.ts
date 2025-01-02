@@ -1,7 +1,7 @@
 import { type NextRequest } from "next/server";
 
+import { CosyVoiceService } from "~/core/aliyun";
 import { type AudioFormat } from "~/core/audio";
-import { CosyVoiceService } from "~/core/cosy-voice";
 
 export async function GET(request: NextRequest) {
   const format = (request.nextUrl.searchParams.get("format") ??
@@ -11,10 +11,10 @@ export async function GET(request: NextRequest) {
   });
   await cosyVoiceService.open();
   await cosyVoiceService.startSynthesis();
-  cosyVoiceService.speak("你知道AI是什么吗？");
-  cosyVoiceService.speak(
-    "AI 就像一个超级聪明的机器人大脑，它能听懂和说很多很多的话。",
-  );
+  cosyVoiceService.speak("你知道");
+  // cosyVoiceService.speak(
+  //   "AI 就像一个超级聪明的机器人大脑，它能听懂和说很多很多的话。",
+  // );
   // cosyVoiceService.speak("举一个例子，AI 可以回答你任何问题，");
   // cosyVoiceService.speak("还能够为你画图，");
   // cosyVoiceService.speak("甚至为你写代码。");

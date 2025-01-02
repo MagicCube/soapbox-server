@@ -1,10 +1,13 @@
 import WebSocket from "ws";
 
+import {
+  AudioStream,
+  type AudioFormat,
+  type AudioSampleRate,
+} from "~/core/audio";
+import { sleep } from "~/core/utils/timer";
+import { generateUUID } from "~/core/utils/uuid";
 import { env } from "~/env";
-
-import { AudioStream, type AudioFormat, type AudioSampleRate } from "../audio";
-import { sleep } from "../utils/timer";
-import { generateUUID } from "../utils/uuid";
 
 import { type CosyVoiceCommand } from "./commands";
 import { type CosyVoiceName } from "./types";
@@ -96,14 +99,11 @@ export class CosyVoiceService {
     return this._taskId;
   }
 
-  protected get accessToken(): string {
-    return env.ALIYUN_NLS_ACCESS_TOKEN;
-  }
-
   async open() {
+    const accessToken = await this.getAccessToken();
     this._ws = new WebSocket(WS_ENTRY_POINT, {
       headers: {
-        "X-NLS-Token": `${this.accessToken}`,
+        "X-NLS-Token": `${accessToken}`,
       },
     });
     this._state = "connecting";
@@ -179,6 +179,10 @@ export class CosyVoiceService {
 
   async waitUntilSynthesisCompleted(timeout = 5 * 1000) {
     await this.waitUntil("synthesis-completed", timeout);
+  }
+
+  protected async getAccessToken(): Promise<string> {
+    return env.ALIYUN_NLS_ACCESS_TOKEN;
   }
 
   protected async waitUntil(state: CosyVoiceServiceState, timeout = 5 * 1000) {
