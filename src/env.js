@@ -8,6 +8,8 @@ export const env = createEnv({
    */
   server: {
     NODE_ENV: z.enum(["development", "test", "production"]),
+    ALIYUN_AK_ID: z.string(),
+    ALIYUN_AK_SECRET: z.string(),
     ALIYUN_NLS_APP_KEY: z.string(),
     ALIYUN_NLS_ACCESS_TOKEN: z.string(),
   },
@@ -27,6 +29,8 @@ export const env = createEnv({
    */
   runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
+    ALIYUN_AK_ID: process.env.ALIYUN_AK_ID,
+    ALIYUN_AK_SECRET: process.env.ALIYUN_AK_SECRET,
     ALIYUN_NLS_APP_KEY: process.env.ALIYUN_NLS_APP_KEY,
     ALIYUN_NLS_ACCESS_TOKEN: process.env.ALIYUN_NLS_ACCESS_TOKEN,
   },
