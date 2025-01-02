@@ -1,14 +1,11 @@
 import { type NextRequest } from "next/server";
 
-import { CosyVoiceService } from "~/core/aliyun";
+import { cosyVoiceService } from "~/core/aliyun";
 import { type AudioFormat } from "~/core/audio";
 
 export async function GET(request: NextRequest) {
   const format = (request.nextUrl.searchParams.get("format") ??
     "pcm") as AudioFormat;
-  const cosyVoiceService = new CosyVoiceService({
-    format,
-  });
   await cosyVoiceService.open();
   await cosyVoiceService.startSynthesis();
   cosyVoiceService.speak("你知道");

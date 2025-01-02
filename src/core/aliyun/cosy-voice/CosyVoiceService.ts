@@ -275,3 +275,5 @@ export class CosyVoiceService {
     console.error("CosyVoiceService WebSocket error:", error);
   };
 }
+
+export const cosyVoiceService = new CosyVoiceService();
